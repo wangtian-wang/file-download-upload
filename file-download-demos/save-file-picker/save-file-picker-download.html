@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>showSaveFilePicker 下载示例</title>
-    <script src="https://unpkg.com/merge-images"></script>
+    <!-- <script src="https://unpkg.com/merge-images"></script> -->
+    <script src="../utils/merge.js"></script>
   </head>
   <body>
     <h3>showSaveFilePicker 标签下载示例</h3>
@@ -41,11 +42,15 @@
 
       function dataUrlToBlob(base64, mimeType) {
         let bytes = window.atob(base64.split(",")[1]);
+        console.log(typeof bytes, bytes);
         let ab = new ArrayBuffer(bytes.length);
+        console.log(ab);
         let ia = new Uint8Array(ab);
+        console.log(ia, "before");
         for (let i = 0; i < bytes.length; i++) {
           ia[i] = bytes.charCodeAt(i);
         }
+        console.log(ia, "after for each");
         return new Blob([ab], { type: mimeType });
       }
 
